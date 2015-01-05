@@ -1,0 +1,10 @@
+*.pyc
+.ropeproject
+*~
+*.sqlite3
+*.csv
+nosync
+migrations
+storage
+whoosh_index
+
