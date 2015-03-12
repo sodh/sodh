@@ -1,1 +1,28 @@
+#inputbox{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#sodhlogo{
+    margin-top: 13%;
+    text-align: center;
+     font-size: 500%;
+}
+
+/* Styling placeholder */
+::-webkit-input-placeholder {
+text-align: center;
+}
+
+:-moz-placeholder { /* older Firefox*/
+text-align: center;
+}
+
+::-moz-placeholder { /* Firefox 19+ */
+text-align: center;
+}
+
+:-ms-input-placeholder {
+text-align: center;
+}
 
