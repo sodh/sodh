@@ -3,17 +3,27 @@
 {% block content %}
 
 <div class="container">
+
+{% if messages %}
+<ul class="messages list-unstyled">
+    {% for message in messages %}
+    <li><div class="alert alert-{{ message.tags }} text-center" role="alert">{{ message }}</div></li>
+    {% endfor %}
+</ul>
+{% endif %}
+
     <h1 id="sodhlogo">Sodh</h1>
 
     <div class="row">
-        <form role="form">
+        <form action="{% url 'home' %}" role="form" method="POST">
+        {% csrf_token %}
 {# file dropdown #}
             <div class="form-group">
                 <div class="row">
                   <div class="col-md-4 col-md-offset-4">
                     <div class="input-group">
                       <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select File <span class="caret"></span></button>
+                        <button id="dropdown1" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Select File <span class="caret"></span></button>
                         <ul class="dropdown-menu" role="menu">
                           <li><a href="#">Nepal Census</a></li>
                           <li><a href="#">HSEB Result</a></li>
@@ -22,7 +32,7 @@
                           <li><a href="#">Export Statistics</a></li>
                         </ul>
                       </div><!-- /btn-group -->
-                      <input type="text" class="form-control" aria-label="..." disabled>
+                      <input type="text" id="fileinput" name="selectedFile" value="thisfile" class="form-control" aria-label="..." disabled>
                     </div><!-- /input-group -->
                   </div><!-- /.col-lg-6 -->
                 </div><!-- /.row -->
@@ -30,7 +40,7 @@
 
 {# large input box #}
             <div class="form-group">
-                <input id="inputbox" class="form-control input-lg vertical-center" placeholder = "Enter command here." type="text">
+                <input id="inputbox" name="command" class="form-control input-lg vertical-center" placeholder = "Enter command here." type="text">
             </div>
 
 {# go button #}
@@ -40,3 +50,14 @@
 </div>
 
 {% endblock content %}
+
+{% block extrajs %}
+
+<script type="text/javascript">
+
+  $('#fileinput').val('Nepal Census.csv');
+
+</script>
+
+
+{% endblock extrajs %}
