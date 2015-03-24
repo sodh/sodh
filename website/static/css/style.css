@@ -1,11 +1,12 @@
 #inputbox{
-    margin-top: 50px;
+    margin-top: 10px;
     margin-bottom: 50px;
     text-align: center;
 }
 
 #sodhlogo{
     margin-top: 13%;
+    margin-bottom: 50px;
     text-align: center;
      font-size: 500%;
 }
