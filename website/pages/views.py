@@ -12,7 +12,7 @@ def home(request):
 
     if request.method == 'POST':
         command = request.POST.get('command')
-        selectedFile = request.POST.get('selectedFIle')
+        selectedFile = request.POST.get('selectedFile')
 
         if command is not '':
             messages.success(request, "Please wait while \"%s\" is executed on %s." % (command, selectedFile) )
