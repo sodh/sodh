@@ -83,7 +83,7 @@ class MyDBSCAN(Cluster):
         ##############################################################################
         # Plot result
         import matplotlib.pyplot as plt
-
+        plt.clf()
         # Black removed and is used for noise instead.
         unique_labels = set(labels)
         colors = plt.cm.Spectral(np.linspace(0, 1, len(unique_labels)))
