@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib import messages
+import os
 
 from mind.mapper import Mapper
 
@@ -14,14 +15,22 @@ def home(request):
 
         if command is not '' and selectedFile is not '':
             mapper = Mapper()
-            mapper.mapRE("Cluster","mind/datasets/data_cluster3d.csv",command)
+            mapper.mapRE("Cluster", "mind/datasets/" + selectedFile, command)
 
             messages.success(request, "Please wait while \"%s\" is executed on %s." % (command, selectedFile) )
         else:
             messages.error(request, "Please select a file and type in a valid command.")
 
+    datasets = []
+    for file_name in os.listdir("mind/datasets/"):
+        if file_name.endswith(".csv"):
+            datasets.append(file_name)
+
     args = {
         'title': "Sodh : Generic Research Assistant",
+        'command': request.POST.get('command'),
+        'selectedFile': request.POST.get('selectedFile'),
+        'datasets': datasets,
     }
 
     return render(request, 'pages/index.html', args)
