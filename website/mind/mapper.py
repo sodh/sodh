@@ -1,4 +1,5 @@
 from mind.mind.cluster import *
+from mind.mind.regression import *
 import inspect
 import re
 
@@ -8,7 +9,8 @@ import re
 class Mapper:
     def mapRE(self,action,data_source,command):
     	#eval(class_name) returns class
-    	classes = [cls for cls in eval(action).__subclasses__()]
+    	classes = [cls for cls in eval("Regression").__subclasses__()]
+    	classes.extend([cls for cls in eval("Cluster").__subclasses__()])
     	print(classes)
 
     	for cls in classes:
