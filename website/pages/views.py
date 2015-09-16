@@ -4,6 +4,7 @@ import os
 
 from mind.mapper import Mapper
 
+
 def home(request):
     '''
     This is the homepage of the website.
@@ -19,7 +20,7 @@ def home(request):
             mapper = Mapper()
             output = mapper.mapRE("Cluster", "mind/datasets/" + selectedFile, command)
 
-            messages.success(request, "Please wait while \"%s\" is executed on %s." % (command, selectedFile) )
+            messages.success(request, "Please wait while \"%s\" is executed on %s." % (command, selectedFile))
         else:
             messages.error(request, "Please select a file and type in a valid command.")
 

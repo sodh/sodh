@@ -49,7 +49,9 @@
     </form>
     <div>{{ output | linebreaks }}</div>
   {# <h3>Last Plot: </h3> #}
-    <img src="static/images/last_plot.png">
+    {% if output == "no output" %}
+      <img src="static/images/last_plot.png">      
+    {% endif %}
   </div>
 </div>
 
