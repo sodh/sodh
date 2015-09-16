@@ -11,6 +11,9 @@ class Numeric(Param):
     def get(self):
         return int(self.value)
 
+    def get_float(self):
+        return float(self.value)
+
     def __str__(self):
         return str(self.value)
 

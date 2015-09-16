@@ -9,13 +9,15 @@ def home(request):
     This is the homepage of the website.
     '''
 
+    output = "no output"
+
     if request.method == 'POST':
         command = request.POST.get('command')
         selectedFile = request.POST.get('selectedFile')
 
         if command is not '' and selectedFile is not '':
             mapper = Mapper()
-            mapper.mapRE("Cluster", "mind/datasets/" + selectedFile, command)
+            output = mapper.mapRE("Cluster", "mind/datasets/" + selectedFile, command)
 
             messages.success(request, "Please wait while \"%s\" is executed on %s." % (command, selectedFile) )
         else:
@@ -30,6 +32,7 @@ def home(request):
         'title': "Sodh : Generic Research Assistant",
         'command': request.POST.get('command'),
         'selectedFile': request.POST.get('selectedFile'),
+        'output': output,
         'datasets': datasets,
     }
 
